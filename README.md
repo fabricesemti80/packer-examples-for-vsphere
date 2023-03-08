@@ -1052,3 +1052,7 @@ Happy building!!!
 [vsphere-upload]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.storage.doc/GUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html
 [vsphere-tpm]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html
 [supported guest OS types]: https://github.com/hashicorp/packer/issues/9153
+
+### Script to get path of content library item
+
+<https://github.com/fabricesemti80/main_script_collection/blob/master/my_powershell_scripts/VMWARE/Get-ContentLibraryItemPath.ps1>

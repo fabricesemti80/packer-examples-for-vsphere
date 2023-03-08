@@ -5,7 +5,7 @@
 
 // Installation Operating System Metadata
 vm_inst_os_language                 = "en-US"
-vm_inst_os_keyboard                 = "en-US"
+vm_inst_os_keyboard                 = "en-GB"
 vm_inst_os_image_standard_core      = "Windows Server 2022 SERVERSTANDARDCORE"
 vm_inst_os_image_standard_desktop   = "Windows Server 2022 SERVERSTANDARD"
 vm_inst_os_kms_key_standard         = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H"
@@ -26,10 +26,10 @@ vm_guest_os_experience_core    = "core"
 vm_guest_os_experience_desktop = "dexp"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "windows2019srvNext_64Guest"
+vm_guest_os_type = "windows9Server64Guest" # "windows2019srvNext_64Guest" #TODO: reverse this after vSphere upgrade
 
 // Virtual Machine Hardware Settings
-vm_firmware              = "efi-secure"
+vm_firmware              = "efi" # "efi-secure"
 vm_cdrom_type            = "sata"
 vm_cpu_count             = 2
 vm_cpu_cores             = 1
@@ -42,10 +42,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/windows/server"
-iso_file           = "en-us_windows_server_2022_updated_dec_2022_x64_dvd_14fe3ddc.iso"
+iso_path           = "contentlib-b3bfc4b1-c97d-4061-8cc6-e02be0dcdca2/d1848060-b9f0-48ca-9367-2a151fd2fb02"
+iso_file           = "SW_DVD9_Win_Server_STD_CORE_2022_2108.8_64Bit_English_DC_STD_MLF_X23-12234_cadb5d0f-77ff-442d-8058-d35a3c3fd491.ISO"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "4A66E6203D4108A31944C96591C67D9994DA2B0C1958433E021B0928EDCE9385"
+iso_checksum_value = "f2f78c8c669389c230915282c467e71311d11a494081be7387cbc7a499ca4c5e"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

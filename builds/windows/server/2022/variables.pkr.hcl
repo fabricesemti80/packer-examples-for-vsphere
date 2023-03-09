@@ -418,6 +418,12 @@ variable "scripts" {
   default     = []
 }
 
+variable "post_wsus_scripts" {
+  type        = list(string)
+  description = "These scripts are designed to be run after the initial (Microsoft) Windows Update, using the local WSUS server(s)"
+  default     = []
+}
+
 variable "inline" {
   type        = list(string)
   description = "A list of commands to run."

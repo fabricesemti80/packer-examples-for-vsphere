@@ -512,6 +512,15 @@ build {
     restart_timeout = "120m"
   }
 
+  provisioner "powershell" {
+    environment_vars = [
+      "BUILD_USERNAME=${var.build_username}"
+    ]
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = formatlist("${path.cwd}/%s", var.post_wsus_scripts)
+  }
+
   post-processor "manifest" {
     output     = local.manifest_output
     strip_path = true

@@ -14,9 +14,9 @@ vm_inst_os_image_datacenter_desktop = "Windows Server 2022 SERVERDATACENTER"
 vm_inst_os_kms_key_datacenter       = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33"
 
 // Guest Operating System Metadata
-vm_guest_os_language           = "en-US"
-vm_guest_os_keyboard           = "en-US"
-vm_guest_os_timezone           = "UTC"
+vm_guest_os_language           = "en-GB"
+vm_guest_os_keyboard           = "en-GB"
+vm_guest_os_timezone           = "GMT"
 vm_guest_os_family             = "windows"
 vm_guest_os_name               = "server"
 vm_guest_os_version            = "2022"
@@ -29,14 +29,14 @@ vm_guest_os_experience_desktop = "dexp"
 vm_guest_os_type = "windows9Server64Guest" # "windows2019srvNext_64Guest" #TODO: reverse this after vSphere upgrade
 
 // Virtual Machine Hardware Settings
-vm_firmware              = "efi" # "efi-secure"
+vm_firmware              = "efi-secure"
 vm_cdrom_type            = "sata"
 vm_cpu_count             = 2
 vm_cpu_cores             = 1
-vm_cpu_hot_add           = false
+vm_cpu_hot_add           = true
 vm_mem_size              = 4096
-vm_mem_hot_add           = false
-vm_disk_size             = 102400
+vm_mem_hot_add           = true
+vm_disk_size             = 71680
 vm_disk_controller_type  = ["pvscsi"]
 vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
@@ -55,12 +55,15 @@ vm_shutdown_command = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
 
 // Communicator Settings
 communicator_port    = 5985
-communicator_timeout = "12h"
+communicator_timeout = "2h"
 
 // Provisioner Settings
+#todo: when WSUS is fixed - currently updates are not approved on it, therefore it is unusable - enable script to configure it as a source for Windows Updates
+#todo: until than updates should come from Microsoft and Terraform should configure WSUS settings
 scripts = ["scripts/windows/windows-prepare.ps1"]
+# scripts = ["scripts/windows/windows-prepare.ps1","scripts/windows/windows-wsus.ps1"]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",
-  "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
+  "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log -ErrorAction SilentlyContinue }"
 ]

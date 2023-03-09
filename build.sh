@@ -774,7 +774,7 @@ until [ "$selection" = "0" ]; do
 	echo "    	 8  -  Red Hat Enterprise Linux 7"
 	echo "    	 9  -  AlmaLinux OS 9"
 	echo "    	10  -  AlmaLinux OS 8"
-	echo "    	11  -  Rocky Linux 9"
+	echo -e " \e[0;32m    	11  -  Rocky Linux 9\e[0m "
 	echo "    	12  -  Rocky Linux 8"
 	echo "    	13  -  CentOS Stream 9"
 	echo "    	14  -  CentOS Stream 8"

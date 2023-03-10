@@ -4,9 +4,9 @@
 */
 
 // Guest Operating System Metadata
-vm_guest_os_language = "en_US"
-vm_guest_os_keyboard = "us"
-vm_guest_os_timezone = "UTC"
+vm_guest_os_language = "en_GB"
+vm_guest_os_keyboard = "gb"
+vm_guest_os_timezone = "GMT"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "ubuntu"
 vm_guest_os_version  = "22.04-lts"
@@ -28,8 +28,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/ubuntu"
-iso_file           = "ubuntu-22.04.2-live-server-amd64.iso"
+iso_path           = "contentlib-b3bfc4b1-c97d-4061-8cc6-e02be0dcdca2/a7568055-6739-4657-8056-e6eba5c05bd2"
+iso_file           = "ubuntu-22.04.2-live-server-amd64_7d6d1700-8a5c-41a9-b5d6-db469e4b8ff4.iso"
 iso_checksum_type  = "sha256"
 iso_checksum_value = "5e38b55d57d94ff029719342357325ed3bda38fa80054f9330dc789cd2d43931"
 

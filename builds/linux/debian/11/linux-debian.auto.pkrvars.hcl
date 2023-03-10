@@ -28,8 +28,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "contentlib-b3bfc4b1-c97d-4061-8cc6-e02be0dcdca2/b7564e6f-a3c8-4e46-8b37-a226243acff0"
-iso_file           = "debian-11.6.0-amd64-netinst_5e31e681-e291-49a9-9a8a-0dd71c115da5.iso"
+iso_path           = "contentlib-b3bfc4b1-c97d-4061-8cc6-e02be0dcdca2/6d9ba35d-0d11-470a-8885-037b499320e8"
+iso_file           = "debian-11.6.0-amd64-netinst_d80507e7-9c3d-4c28-a399-113ffa4f5491.iso"
 iso_checksum_type  = "sha512"
 iso_checksum_value = "224cd98011b9184e49f858a46096c6ff4894adff8945ce89b194541afdfd93b73b4666b0705234bd4dff42c0a914fdb6037dd0982efb5813e8a553d8e92e6f51"
 

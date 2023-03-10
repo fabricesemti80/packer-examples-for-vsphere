@@ -7,7 +7,7 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.8.6"
+  required_version = " 1.8.3" # ">= 1.8.6" #TODO: reverse this after vSphere upgrade
   required_plugins {
     git = {
       version = ">= 0.3.3"

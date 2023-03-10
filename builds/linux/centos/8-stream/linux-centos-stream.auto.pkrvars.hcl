@@ -4,15 +4,15 @@
 */
 
 // Guest Operating System Metadata
-vm_guest_os_language = "en_US"
-vm_guest_os_keyboard = "us"
-vm_guest_os_timezone = "UTC"
+vm_guest_os_language = "en_GB"
+vm_guest_os_keyboard = "gb"
+vm_guest_os_timezone = "GMT"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "centos-stream"
 vm_guest_os_version  = "8"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "centos8_64Guest"
+vm_guest_os_type = "centos64Guest" # "centos8_64Guest" #TODO: reverse this after vSphere upgrade
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
@@ -28,10 +28,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/centos"
-iso_file           = "CentOS-Stream-8-x86_64-latest-dvd1.iso"
+iso_path           = "contentlib-b3bfc4b1-c97d-4061-8cc6-e02be0dcdca2/3aae82bb-ec92-4e44-8308-27b2c771f8fb"
+iso_file           = "CentOS-Stream-8-x86_64-latest-dvd1_0c3a036c-80d9-4294-996a-949495854866.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "93bf47db3b7c0af1580b5bdcb754ee6d67e2a1c2f0e8b4604f9f3d4748547c01"
+iso_checksum_value = "493bb291f4757c926f9bf20c306167257f6f7dafa9e409b40008bc3d388772e8"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

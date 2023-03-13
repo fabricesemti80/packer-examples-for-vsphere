@@ -10,6 +10,7 @@
 
 $ErrorActionPreference = 'Stop'
 
+Write-Output '-- WINDOWS INITIAL CONFIGURATION - START --'
 # Set network connections provile to Private mode.
 Write-Output 'Setting the network connection profiles to Private...'
 $connectionProfile = Get-NetConnectionProfile
@@ -33,3 +34,4 @@ netsh advfirewall firewall set rule name="Windows Remote Management (HTTP-In)" n
 # Reset the autologon count.
 # Reference: https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup-autologon-logoncount#logoncount-known-issue
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonCount -Value 0
+Write-Output '-- WINDOWS INITIAL CONFIGURATION - END --'

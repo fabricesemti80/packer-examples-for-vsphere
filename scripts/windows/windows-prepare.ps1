@@ -26,6 +26,8 @@ $ErrorActionPreference = "Stop"
 # Import-Certificate -FilePath C:\windows\temp\issuing-ca.cer -CertStoreLocation 'Cert:\LocalMachine\CA' | Out-Null
 # Remove-Item C:\windows\temp\issuing-ca.cer -Confirm:$false
 
+Write-Output '-- WINDOWS SYSTEM PREPARATION - START --'
+
 # Set the Windows Explorer options.
 Write-Output "Setting the Windows Explorer options..."
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1 | Out-Null
@@ -72,3 +74,5 @@ Enable-NetFirewallRule -Group '@FirewallAPI.dll,-28752'
 
 # Enable firewall - all profiles
 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
+
+Write-Output '-- WINDOWS SYSTEM PREPARATION - END --'

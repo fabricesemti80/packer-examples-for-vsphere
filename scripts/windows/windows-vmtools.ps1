@@ -30,6 +30,8 @@ Function Get-VMToolsInstalled {
     return $Version
 }
 
+Write-Output '-- VMWARE TOOLS INSTALLATION - START --'
+
 # Set the current working directory to the CD-ROM that corresponds to the VMWare Tools .iso.
 
 Set-Location E:
@@ -108,3 +110,5 @@ while (-not $Running -and $iRepeat -lt 5) {
   }
 
 }
+
+Write-Output '-- VMWARE TOOLS INSTALLATION - END --'

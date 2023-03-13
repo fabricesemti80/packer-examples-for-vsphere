@@ -59,6 +59,7 @@ communicator_timeout = "2h"
 
 // Provisioner Settings
 scripts = ["scripts/windows/windows-prepare.ps1"]
+post_wsus_scripts = ["scripts/windows/windows-wsus.ps1"]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",

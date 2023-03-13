@@ -1,5 +1,7 @@
 
-#$Tgg = "YourTargetGroup" #todo: uncomment line 19 & 27 if used
+Write-Output '-- WSUS CONFIGURATION - START --'
+
+$Tgg = "Build"
 $Wup = "http://winupdate.oy.gb.sportingindex.com:8530" # primary WSUS server
 $Wur = "http://winupdate.oy.gb.sportingindex.com:8530" # secondary WSUS server (use primary, if only one!)
 
@@ -19,12 +21,12 @@ Remove-item -Path 'C:\windows\SoftwareDistribution\Download' -Recurse -Force -Co
 #Force set WU client settings
 Write-Output "Configure WSUS"
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue
-# New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name TargetGroup -Value $Tgg -PropertyType "String" -Force -ErrorAction SilentlyContinue
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name TargetGroup -Value $Tgg -PropertyType "String" -Force -ErrorAction SilentlyContinue
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name WUServer -Value $Wup -PropertyType "String" -Force -ErrorAction SilentlyContinue
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name WUStatusServer -Value $Wup -PropertyType "String" -Force -ErrorAction SilentlyContinue
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name UpdateServiceUrlAlternate -Value $Wur -PropertyType "String" -Force -ErrorAction SilentlyContinue
 
-# New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name TargetGroupEnabled -Value 1 -PropertyType DWord -Force -ErrorAction SilentlyContinue
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name TargetGroupEnabled -Value 1 -PropertyType DWord -Force -ErrorAction SilentlyContinue
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name DoNotConnectToWindowsUpdateInternetLocations -Value 1 -PropertyType DWord -Force -ErrorAction SilentlyContinue
 
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -ErrorAction SilentlyContinue
@@ -63,3 +65,5 @@ start-service cryptsvc
 # Write-Output "Sending reports to WSUS server"
 # start-sleep -s 60
 # cmd /c "wuauclt /reportnow"
+
+Write-Output '-- WSUS CONFIGURATION - END --'

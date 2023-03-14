@@ -1,0 +1,4 @@
+base_svr_groups:
+  - name: Linux_Admins
+    groupid: 1717804166
+    sudo: false

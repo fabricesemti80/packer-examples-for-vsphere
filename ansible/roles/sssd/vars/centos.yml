@@ -1,0 +1,10 @@
+---
+sssd_ldap_packages:
+  - sssd
+  - sudo
+  - openssh-server
+  - authconfig
+  - libselinux-python
+  - open-vm-tools
+
+sssd_ldap_ssh_service: sshd

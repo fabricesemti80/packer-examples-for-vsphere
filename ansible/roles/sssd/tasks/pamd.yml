@@ -1,0 +1,15 @@
+---
+- name: pamd | add pam_mkhomedir for RedHat machines
+  command: /usr/sbin/authconfig --enablesssd --enablesssdauth --enablemkhomedir --updateall
+  changed_when: false
+  when: ansible_os_family == "RedHat"
+
+- name: pamd | common-session
+  template:
+    src: common-session.j2
+    dest: /etc/pam.d/common-session
+    backup: yes
+    owner: root
+    group: root
+  when: ansible_os_family == "Debian"
+

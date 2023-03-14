@@ -1,0 +1,57 @@
+---
+- name: sshd | ensure password authentication is yes
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication.*no'
+    line: 'PasswordAuthentication yes'
+  notify:
+    - restart sshd
+
+- name: sshd | Add sss_key Ubuntu
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: 'AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys'
+  when: ansible_os_family == "Debian"
+  notify:
+    - restart sshd
+
+- name: sshd | Add sss_key CentOS 7
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: 'AuthorizedKeysCommand /bin/sss_ssh_authorizedkeys'
+  when: ansible_distribution_major_version == "7"
+  notify:
+    - restart sshd
+- name: sshd | Add sss_key CentOS 6
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: 'AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys'
+  when: ansible_distribution_major_version == "6"
+  notify:
+    - restart sshd
+
+- name: sshd | Add AutherizedKeys When not CentOS 6
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: 'AuthorizedKeysCommandUser root'
+  when: ansible_distribution_major_version != "6"
+  notify:
+    - restart sshd
+
+- name: sshd | Add AutherizedKeys CentOS 6
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: 'AuthorizedKeysCommandRunAs root'
+  when: ansible_distribution_major_version == "6"
+  notify:
+    - restart sshd
+
+- name: sshd | ensure sshd service is enabled
+  service:
+    name: "{{ sssd_ldap_ssh_service }}"
+    enabled: true
+
+- name: sshd | ensure sshd service is started
+  service:
+    name: "{{ sssd_ldap_ssh_service }}"
+    state: started

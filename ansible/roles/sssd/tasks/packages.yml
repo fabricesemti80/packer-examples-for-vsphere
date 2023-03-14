@@ -1,0 +1,12 @@
+---
+- name: packages | install packages
+  package:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ sssd_ldap_packages }}"
+
+- name: packages | ensure nscd is absent
+  package:
+    name: nscd
+    state: absent

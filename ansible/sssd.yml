@@ -5,7 +5,4 @@
   gather_facts: "yes"
   hosts: all
   roles:
-    - base
-    - users
-    - configure
-    - clean
+    - sssd

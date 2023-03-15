@@ -1,10 +1,10 @@
 [domain/gb.sportingindex.com]
 id_provider = ldap
 cache_credentials = False
-ldap_uri = ldap://gb.sportingindex.com:389
+ldap_uri = {{ LDAP_URI }}
 ldap_schema = AD
-ldap_default_bind_dn = cn=svc_linuxdomain,OU=Service Accounts,OU=SpinUsers,DC=gb,DC=sportingindex,DC=com
-ldap_default_authtok = FV^8eZwGZ=bSWMS@xRx8
+ldap_default_bind_dn = {{ LDAP_DEFAULT_BIND_DN }}
+ldap_default_authtok = {{ LDAP_DEFAULT_AUTHTOK }}
 ldap_default_authtok_type = password
 ldap_id_mapping = True
 ldap_referrals = false
@@ -12,7 +12,7 @@ enumerate = False
 access_provider = ldap
 fallback_homedir = /home/%u
 default_shell = /bin/bash
-ldap_search_base = DC=gb,DC=sportingindex,DC=com
+ldap_search_base = {{ LDAP_SEARCH_BASE }}
 ldap_user_search_base = OU=SpinUsers,DC=gb,DC=sportingindex,DC=com
 ldap_access_filter = memberOf=CN=Linux_Users,OU=SpinGroups,DC=gb,DC=sportingindex,DC=com
 ldap_user_extra_attrs = altSecurityIdentities:altSecurityIdentities

@@ -187,8 +187,34 @@ build {
       "--extra-vars", "BUILD_SECRET='${var.build_key}'",
       "--extra-vars", "ANSIBLE_USERNAME=${var.ansible_username}",
       "--extra-vars", "ANSIBLE_SECRET='${var.ansible_key}'",
+    ]
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo 'Rebooting system...'",
+      "sudo reboot"
+    ]
+    inline_shebang = "/bin/bash -e"
+    expect_disconnect = true
+  }
+
+  provisioner "ansible" {
+    pause_before = "10s"
+    playbook_file = "${path.cwd}/ansible/sssd.yml"
+    roles_path    = "${path.cwd}/ansible/roles"
+    ansible_env_vars = [
+      "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg",
+      "ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3"
+    ]
+    extra_arguments = [
+      "--extra-vars", "display_skipped_hosts=false",
+      "--extra-vars", "BUILD_USERNAME=${var.build_username}",
+      "--extra-vars", "BUILD_SECRET='${var.build_key}'",
+      "--extra-vars", "ANSIBLE_USERNAME=${var.ansible_username}",
+      "--extra-vars", "ANSIBLE_SECRET='${var.ansible_key}'",
       "--extra-vars", "LDAP_URI=${var.ldap_uri}",
-      "--extra-vars", "LDAP_DEFAULT_BIND_DN=${var.ldap_default_bind_dn}",
+      "--extra-vars", "LDAP_DEFAULT_BIND_DN='${var.ldap_default_bind_dn}'",
       "--extra-vars", "LDAP_DEFAULT_AUTHTOK='${var.ldap_default_auth_tok}'",
       "--extra-vars", "LDAP_SEARCH_BASE=${var.ldap_search_base}",
     ]

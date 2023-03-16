@@ -74,6 +74,7 @@ menu_option_2() {
 		-var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/ldap.pkvars.hcl" \
 		"$INPUT_PATH"
 
 	### All done. ###

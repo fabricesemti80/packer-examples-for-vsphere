@@ -397,3 +397,15 @@ variable "ldap_search_base" {
   type = string
   description = "Default LDAP domain root"
 }
+variable "ldap_user_search_base" {
+  type = string
+  description = "Default user OU"
+}
+variable "ldap_access_filter" {
+  type = string
+  description = "Default LDAP group"
+}
+variable "ldap_domain" {
+  type = string
+  description = "Default LDAP domain"
+}

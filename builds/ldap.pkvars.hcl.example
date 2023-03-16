@@ -1,0 +1,14 @@
+/*
+    DESCRIPTION:
+    LDAP variables
+    - Variables are passed to and used by configuration scripts.
+*/
+
+// Ansible Credentials
+ldap_uri = "ldap://YOURDOMAIN.com:389"
+ldap_default_bind_dn = "cn=svc_linuxdomain,OU=Service Accounts,OU=SOMEUsers,DC=gb,DC=YOURDOMAIN,DC=com"
+ldap_default_auth_tok = "SECRETPASSWORD"
+ldap_search_base = "DC=gb,DC=YOURDOMAIN,DC=com"
+ldap_user_search_base = "OU=SOMEUsers,DC=gb,DC=YOURDOMAIN,DC=com"
+ldap_access_filter = "CN=Linux_Users,OU=SOMEGroups,DC=gb,DC=YOURDOMAIN,DC=com"
+ldap_domain = "gb.YOURDOMAIN.com"

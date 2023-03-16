@@ -1,0 +1,39 @@
+---
+# handlers file for sssd_ldap
+- name: stop sssd
+  service:
+    name: sssd
+    state: stopped
+  listen: restart sssd
+
+- name: delete sssd cache
+  file:
+    path: "/var/lib/sss/db/{{ item }}"
+    state: absent
+  with_items:
+    - cache_default.ldb
+    - config.ldb
+    - sssd.ldb
+    - timestamps_default.ldb
+  listen: restart sssd
+
+- name: start sssd
+  service:
+    name: sssd
+    state: started
+  listen: restart sssd
+
+- name: run pam auth update
+  shell: pam-auth-update --package
+
+- name: restart sshd
+  service:
+    name: "{{ sssd_ldap_ssh_service }}"
+    state: restarted
+
+- name: reload systemd config
+  systemd:
+    name: sssd
+    state: restarted
+    daemon_reload: yes
+  when: ansible_distribution_major_version != "6"

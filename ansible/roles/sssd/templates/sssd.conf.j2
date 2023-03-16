@@ -1,0 +1,29 @@
+[domain/{{ LDAP_DOMAIN }}]
+id_provider = ldap
+cache_credentials = False
+ldap_uri = {{ LDAP_URI }}
+ldap_schema = AD
+ldap_default_bind_dn = {{ LDAP_DEFAULT_BIND_DN }}
+ldap_default_authtok = {{ LDAP_DEFAULT_AUTHTOK }}
+ldap_default_authtok_type = password
+ldap_id_mapping = True
+ldap_referrals = false
+enumerate = False
+access_provider = ldap
+fallback_homedir = /home/%u
+default_shell = /bin/bash
+ldap_search_base = {{ LDAP_SEARCH_BASE }}
+ldap_user_search_base = {{ LDAP_USER_SEARCH_BASE }}
+ldap_access_filter = memberOf={{ LDAP_ACCESS_FILTER }}
+ldap_user_extra_attrs = altSecurityIdentities:altSecurityIdentities
+ldap_user_ssh_public_key = altSecurityIdentities
+ldap_use_tokengroups = True
+[sssd]
+config_file_version = 2
+services = nss, pam, ssh
+domains = {{ LDAP_DOMAIN }}
+[nss]
+filter_users = nobody,root,mdaops,rabbitmq,postfix,apache,redis,nagios,tcpdump
+filter_groups = nobody,root,mdaops,rabbitmq,postfix,apache,redis,nagios,tcpdump
+[pam]
+offline_credentials_expiration = 7

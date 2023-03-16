@@ -1,0 +1,49 @@
+---
+sssd_defaults:
+  # Debug level for:
+  # Fatal failures, Critical failures, Serious failures
+  # Configuration settings, Function data
+  debug_level: '0x0370'
+  services: nss, pam, autofs
+
+sssd_nss:
+  filter_users: root
+  filter_groups: root
+  reconnection_retries: 3
+  entry_cache_timeout: 300
+  entry_cache_nowait_percentage: 75
+
+sssd_domain_defaults:
+  id_provider: ldap
+  auth_provider: ldap
+  enumerate: 'true'
+  # ldap_uri: ldap://gb.sportingindex.com:389
+  ldap_uri: ${LDAP_URI}
+  ldap_id_use_start_tls: 'false'
+  ldap_tls_reqcert: never
+  # ldap_default_bind_dn: cn=svc_linuxdomain,OU=Service Accounts,OU=SpinUsers,DC=gb,DC=sportingindex,DC=com
+  ldap_default_bind_dn: ${LDAP_DEFAULT_BIND_DN}
+  ldap_default_authtok_type: password
+  # ldap_default_authtok: FV^8eZwGZ=bSWMS@xRx8
+  ldap_default_authtok: ${LDAP_DEFAULT_AUTHTOK}
+  # ldap_search_base: DC=gb,DC=sportingindex,DC=com
+  ldap_search_base: ${LDAP_SEARCH_BASE}
+  ldap_use_tokengroups: True
+  ldap_schema: ad
+  ldap_id_mapping: True
+  override_shell: /bin/bash
+sssd_domains:
+  - name: gb.sportingindex.com
+    id_provider: "{{ sssd_domain_defaults.id_provider }}"
+    auth_provider: "{{ sssd_domain_defaults.auth_provider }}"
+    ldap_uri: "{{ sssd_domain_defaults.ldap_uri }}"
+    ldap_id_use_start_tls: "{{ sssd_domain_defaults.ldap_id_use_start_tls }}"
+    ldap_tls_reqcert: "{{ sssd_domain_defaults.ldap_tls_reqcert }}"
+    ldap_default_bind_dn: "{{ sssd_domain_defaults.ldap_default_bind_dn }}"
+    ldap_default_authtok_type: "{{ sssd_domain_defaults.ldap_default_authtok_type }}"
+    ldap_default_authtok: "{{ sssd_domain_defaults.ldap_default_authtok }}"
+    ldap_search_base: "{{ sssd_domain_defaults.ldap_search_base }}"
+    ldap_schema: "{{ sssd_domain_defaults.ldap_schema }}"
+    ldap_id_mapping: "{{ sssd_domain_defaults.ldap_id_mapping }}"
+    override_shell: "{{ sssd_domain_defaults.override_shell }}"
+    ldap_use_tokengroups: "{{ sssd_domain_defaults.ldap_use_tokengroups }}"

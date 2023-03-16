@@ -68,11 +68,13 @@ menu_option_2() {
 	### Start the Build. ###
 	echo "Starting the build...."
 	packer build -force \
+		-on-error=ask \
 		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/ldap.pkvars.hcl" \
 		"$INPUT_PATH"
 
 	### All done. ###
@@ -128,6 +130,7 @@ menu_option_4() {
 	### Start the Build. ###
 	echo "Starting the build...."
 	packer build -force \
+		-on-error=ask \
 		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \

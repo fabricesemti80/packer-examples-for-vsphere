@@ -375,3 +375,37 @@ variable "common_hcp_packer_registry_enabled" {
   description = "Enable the HCP Packer registry."
   default     = false
 }
+
+// LDAP settings
+variable "ldap_uri" {
+  type = string
+  description = "LDAP connection URI"
+}
+
+variable "ldap_default_bind_dn" {
+  type = string
+  description = "LDAP identity to be used for the authentication"
+}
+
+variable "ldap_default_auth_tok" {
+  type = string
+  sensitive = true
+  description = "LDAP identy's password for 'ldap_default_bind_dn'"
+}
+
+variable "ldap_search_base" {
+  type = string
+  description = "Default LDAP domain root"
+}
+variable "ldap_user_search_base" {
+  type = string
+  description = "Default user OU"
+}
+variable "ldap_access_filter" {
+  type = string
+  description = "Default LDAP group"
+}
+variable "ldap_domain" {
+  type = string
+  description = "Default LDAP domain"
+}

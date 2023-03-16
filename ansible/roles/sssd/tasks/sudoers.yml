@@ -1,0 +1,9 @@
+---
+- name: sudoers | add Linux_Admins to sudoers
+  template:
+    src: sudoers.j2
+    dest: /etc/sudoers.d/Linux_Admins
+    backup: no
+    owner: root
+    group: root
+    mode: 0440

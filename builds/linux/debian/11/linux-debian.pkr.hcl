@@ -187,6 +187,13 @@ build {
       "--extra-vars", "BUILD_SECRET='${var.build_key}'",
       "--extra-vars", "ANSIBLE_USERNAME=${var.ansible_username}",
       "--extra-vars", "ANSIBLE_SECRET='${var.ansible_key}'",
+      "--extra-vars", "LDAP_URI='${var.ldap_uri}'",
+      "--extra-vars", "LDAP_DEFAULT_BIND_DN='${var.ldap_default_bind_dn}'",
+      "--extra-vars", "LDAP_DEFAULT_AUTHTOK='${var.ldap_default_auth_tok}'",
+      "--extra-vars", "LDAP_SEARCH_BASE='${var.ldap_search_base}'",
+      "--extra-vars", "LDAP_USER_SEARCH_BASE='${var.ldap_user_search_base}'",
+      "--extra-vars", "LDAP_ACCESS_FILTER='${var.ldap_access_filter}'",
+      "--extra-vars", "LDAP_DOMAIN='${var.ldap_domain}'",
     ]
   }
 

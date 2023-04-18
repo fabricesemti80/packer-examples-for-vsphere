@@ -12,7 +12,7 @@ vm_guest_os_name     = "debian"
 vm_guest_os_version  = "11.6"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "debian9_64Guest" # "other5xLinux64Guest" #TODO: reverse this after vSphere upgrade
+vm_guest_os_type = "other4xLinux64Guest" # "other5xLinux64Guest" #TODO: reverse this after vSphere upgrade
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
